@@ -1,0 +1,186 @@
+{
+  "name": "YouTube Daily Search Views Tracker",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 12
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -460,
+        160
+      ],
+      "id": "b53878ee-e3f6-4419-bc53-1490e1b4870f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8fd0f431-c4ac-402e-ba37-aa8f7265352b",
+              "name": "date",
+              "value": "={{ (new Date(Date.now() - 3 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        160
+      ],
+      "id": "26e9b142-5db3-4fcb-8ae8-f969a171bb32",
+      "name": "Set Date"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the row that contains YT_SEARCH from analytics data\nconst rows = $input.first().json.rows;\nconst ytSearchRow = rows.find(r => r[0] === 'YT_SEARCH');\nconst views = ytSearchRow ? ytSearchRow[1] : 0; // Default to 0 if not found\n\n// Get the date from previous node\nconst dateString = $items('Set Date')[0].json.date;\nconst date = new Date(dateString);\n\n// Step 1: Extract day from date (1–31)\nconst day = date.getDate();\n\n// Step 2: June 1st starts at column 8 (H), so add (day - 1)\nconst startColumnIndex = 8;\nconst targetColumnIndex = startColumnIndex + (day - 1);\n\n// Step 3: Convert column index to letter (e.g., 32 = AF)\nfunction indexToColumn(n) {\n  let col = '';\n  while (n > 0) {\n    let rem = (n - 1) % 26;\n    col = String.fromCharCode(65 + rem) + col;\n    n = Math.floor((n - 1) / 26);\n  }\n  return col;\n}\n\nconst columnLetter = indexToColumn(targetColumnIndex);\n\n// Step 4: Final cell = Column + Row 3\nconst cell = `${columnLetter}3`;\n\nreturn [\n  {\n    json: {\n      cell,\n      views // renamed back to match your HTTP request field\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        160
+      ],
+      "id": "38de2987-47c8-4ff0-86f9-9e9911ba6782",
+      "name": "Set Data for Google Sheet"
+    },
+    {
+      "parameters": {
+        "url": "https://youtubeanalytics.googleapis.com/v2/reports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "ids",
+              "value": "channel==MINE"
+            },
+            {
+              "name": "startDate",
+              "value": "={{ $json[\"date\"] }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ $json[\"date\"] }}"
+            },
+            {
+              "name": "metrics",
+              "value": "views"
+            },
+            {
+              "name": "dimensions",
+              "value": "insightTrafficSourceType"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        160
+      ],
+      "id": "0fd565fd-7a32-4cad-8994-ffe814deba05",
+      "name": "Fetch YT Analytics",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "null",
+          "name": "Google OAuth2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=YOUR_GOOGLE_SHEET_URL!{{$json[\"cell\"]}}?valueInputOption=USER_ENTERED",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"Daily YT Search Views_June!{{ $json.cell }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\n      \"{{ $json.views }}\"\n    ]\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        160
+      ],
+      "id": "781c322a-b90c-4469-b7cd-0207458abb21",
+      "name": "Update Google Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "null",
+          "name": "Google Sheets OAuth2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Date": {
+      "main": [
+        [
+          {
+            "node": "Fetch YT Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data for Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Update Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch YT Analytics": {
+      "main": [
+        [
+          {
+            "node": "Set Data for Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "j7vTRmBgWwwDthBi",
+  "tags": []
+}

@@ -1,0 +1,24 @@
+# ⛔ Common files to ignore for safety and cleanliness
+
+# Environment files (API keys, secrets, tokens)
+*.env
+.env.*
+
+# n8n backup or temporary files
+*.backup
+*.tmp
+
+# OS-specific system files
+.DS_Store
+Thumbs.db
+
+# Node.js stuff (if you ever use custom JS modules)
+node_modules/
+package-lock.json
+
+# VSCode settings (if using VSCode)
+.vscode/
+
+# Logs and output
+*.log
+logs/
