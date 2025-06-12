@@ -44,6 +44,8 @@ This n8n automation tracks the number of daily YouTube views generated from **Yo
 
 ![Google Sheet Screenshot](https://github.com/Moksh-Bhardwaj/youtube-daily-search-views-tracker-n8n-automation/blob/main/assets/youtube-seo-dashboard-daily-search-views-tab-screenshot.png)
 
+_You can copy the Google Sheet from here for testing purpose: [YouTube SEO Dashboard Sheet](https://docs.google.com/spreadsheets/d/1dCeNcuXSxSi2Yng9H5h4TvmI92MZCFv0h9i9wHtco4g/)_
+
 ---
 
 ## 📝 License
