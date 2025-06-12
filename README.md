@@ -50,15 +50,15 @@ This n8n automation tracks the number of daily YouTube views generated from **Yo
 
 - **Code**: [MIT License](https://github.com/Moksh-Bhardwaj/youtube-daily-search-views-tracker-n8n-automation/blob/main/LICENSE)
 - **Screenshots & Docs**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Attribution required  
-  Credit: **Moksh Bhardwaj**
+  Credit: **[Moksh Bhardwaj](https://superprofile.bio/mokshbhardwaj)**
 
 ---
 
 ## 🙌 Author
 
 **Moksh Bhardwaj**  
-🔗 [YouTube – Grey Matters Tech](https://www.youtube.com/@GreyMattersTech)  
-🔗 [GitHub – Moksh-Bhardwaj](https://github.com/Moksh-Bhardwaj)
+🔗 [YouTube](https://www.youtube.com/@GreyMattersTech)  
+🔗 [GitHub](https://github.com/Moksh-Bhardwaj)
 
 🎥 Watch the full tutorial on [YouTube](https://youtube.com/@GreyMattersTech) — coming soon!
 
