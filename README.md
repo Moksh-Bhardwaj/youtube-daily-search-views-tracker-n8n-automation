@@ -19,8 +19,6 @@ This n8n automation tracks the number of daily YouTube views generated from **Yo
 - [n8n](https://n8n.io/) installed (locally or on cloud)
 - Google OAuth2 credentials for:
   - YouTube Analytics API
-  
-  ➜ **Make sure to include this scope when creating the OAuth Client:** `https://www.googleapis.com/auth/yt-analytics.readonly`
   - Google Sheets API
 
 ---
@@ -30,6 +28,8 @@ This n8n automation tracks the number of daily YouTube views generated from **Yo
 1. **Clone this repository**
 2. **Import `workflow.json` into your n8n instance**
 3. **Connect your own credentials**:
+   - When creating the Google credentials connection inside n8n, make sure to authorize with the following scope for YouTube Analytics:
+`https://www.googleapis.com/auth/yt-analytics.readonly`
    - Replace the Google credentials under:
      - `Fetch YT Analytics`
      - `Update Google Sheet`
