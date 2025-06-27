@@ -61,11 +61,11 @@ _You can copy the Google Sheet from here for testing purpose: [YouTube SEO Dashb
 ## 🙌 Author
 
 **Moksh Bhardwaj**  
-🔗 [YouTube](https://www.youtube.com/@GreyMattersTech)  
-🔗 [Super Prfile](https://superprofile.bio/mokshbhardwaj)
+🔗 [YouTube](https://www.youtube.com/@GreyMattersTech)<br/>
+🔗 [Super Profile](https://superprofile.bio/mokshbhardwaj)<br/>
 🔗 [GitHub](https://github.com/Moksh-Bhardwaj)
 
-🎥 Watch the full tutorial on [YouTube](https://youtube.com/@GreyMattersTech) — coming soon!
+🎥 Watch the full tutorial on [YouTube](https://youtu.be/U8iFlqK28fc)
 
-⭐ Star this repo if you find it useful and want more n8n automations!
+⭐ Star this repo if you find it useful and want more tech tutroials!
 
