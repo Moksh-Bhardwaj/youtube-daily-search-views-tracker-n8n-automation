@@ -106,7 +106,7 @@
     {
       "parameters": {
         "method": "PUT",
-        "url": "=YOUR_GOOGLE_SHEET_URL!{{$json[\"cell\"]}}?valueInputOption=USER_ENTERED",
+        "url": "https://sheets.googleapis.com/v4/spreadsheets/YOUR_GOOGLE_SHEETS_ID/values/Daily%20YT%20Search%20Views_June!{{$json["cell"]}}?valueInputOption=USER_ENTERED",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "googleSheetsOAuth2Api",
         "sendBody": true,
