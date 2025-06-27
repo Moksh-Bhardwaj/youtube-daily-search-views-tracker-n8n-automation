@@ -62,6 +62,7 @@ _You can copy the Google Sheet from here for testing purpose: [YouTube SEO Dashb
 
 **Moksh Bhardwaj**  
 🔗 [YouTube](https://www.youtube.com/@GreyMattersTech)  
+🔗 [Super Prfile](https://superprofile.bio/mokshbhardwaj)
 🔗 [GitHub](https://github.com/Moksh-Bhardwaj)
 
 🎥 Watch the full tutorial on [YouTube](https://youtube.com/@GreyMattersTech) — coming soon!
