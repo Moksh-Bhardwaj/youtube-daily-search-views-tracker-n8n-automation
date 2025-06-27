@@ -33,8 +33,8 @@ This n8n automation tracks the number of daily YouTube views generated from **Yo
    - Replace the Google credentials under:
      - `Fetch YT Analytics`
      - `Update Google Sheet`
-4. **Update the Google Sheets URL** in the workflow with your actual spreadsheet
-5. (Optional) Modify the trigger time, sheet range, or logic to suit your needs
+4. **Update the Google Sheets ID** in the workflow with your actual spreadsheet ID.
+5. (Optional) Modify the trigger time, sheet range, or logic to suit your needs.
 
 ---
 
