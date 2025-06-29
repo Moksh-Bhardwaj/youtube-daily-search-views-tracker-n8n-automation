@@ -66,7 +66,7 @@ _You can copy the Google Sheet from here for testing purpose: [YouTube SEO Dashb
 🔗 [Super Profile](https://superprofile.bio/mokshbhardwaj)<br/>
 🔗 [GitHub](https://github.com/Moksh-Bhardwaj)
 
-🎥 Watch the full tutorial on [YouTube](https://youtu.be/U8iFlqK28fc)
+🎥 Watch the full tutorial on [YouTube](https://www.youtube.com/@greymatterstech) coming soon...
 
 ⭐ Star this repo if you find it useful and want more tech tutroials!
 
