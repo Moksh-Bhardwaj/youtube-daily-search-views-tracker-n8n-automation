@@ -2,6 +2,7 @@
 
 This n8n automation tracks the number of daily YouTube views generated from **YouTube Search** for your channel, using the YouTube Analytics API, and updates them into a connected Google Sheet.
 
+[Watch How this Workflow Works Here on My YouTube Channel](https://youtu.be/L2ZN2vANric)
 ---
 
 ## 🔧 Features
